@@ -24,7 +24,9 @@ public class ReportConverter {
                 rv.getTitle(),
                 rv.getContent(),
                 rv.getCreatedAt(),
-                rv.getUpdatedAt());
+                rv.getUpdatedAt(),
+                rv.getTimeIn(),
+                rv.getTimeOut());
     }
 
     /**
@@ -45,7 +47,9 @@ public class ReportConverter {
                 r.getTitle(),
                 r.getContent(),
                 r.getCreatedAt(),
-                r.getUpdatedAt());
+                r.getUpdatedAt(),
+                r.getTimeIn(),
+                r.getTimeOut());
     }
 
     /**
@@ -76,7 +80,26 @@ public class ReportConverter {
         r.setContent(rv.getContent());
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
+        r.setTimeIn(rv.getTimeIn());
+        r.setTimeOut(rv.getTimeOut());
 
+
+
+    }
+    /**
+     * DTOモデルの全フィールドの内容をViewモデルのフィールドにコピーする
+     * @param r DTOモデル(コピー元)
+     * @param rv Viewモデル(コピー先)
+     */
+    public static void copyModelToView(Report r, ReportView rv) {
+        rv.setId(r.getId());
+        rv.setEmployee(EmployeeConverter.toView(r.getEmployee()));
+        rv.setReportDate(r.getReportDate());
+        rv.setTitle(r.getTitle());
+        rv.setCreatedAt(r.getCreatedAt());
+        rv.setUpdatedAt(r.getUpdatedAt());
+        rv.setTimeIn(r.getTimeIn());
+        rv.setTimeOut(r.getTimeOut());
     }
 
 }
